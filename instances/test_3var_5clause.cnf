@@ -1,0 +1,30 @@
+c Small test instance with 3 variables and 5 clauses
+c This is designed to test community detection and MAX-3SAT algorithms
+c Variables: 1, 2, 3
+c Clauses designed to create interesting conflicts:
+c   Clause 1: (1 OR 2 OR 3) - all positive
+c   Clause 2: (-1 OR -2 OR 3) - conflicts with clause 1 on variables 1,2
+c   Clause 3: (1 OR -2 OR -3) - conflicts with clause 1 on variables 2,3
+c   Clause 4: (-1 OR 2 OR -3) - conflicts with clause 1 on variables 1,3
+c   Clause 5: (-1 OR -2 OR -3) - conflicts with clause 1 on all variables
+c
+c Expected conflicts:
+c   1-2: 2 conflicts (variables 1,2)
+c   1-3: 2 conflicts (variables 2,3)  
+c   1-4: 2 conflicts (variables 1,3)
+c   1-5: 3 conflicts (variables 1,2,3)
+c   2-3: 2 conflicts (variables 2,3)
+c   2-4: 2 conflicts (variables 1,3)
+c   2-5: 1 conflict (variable 2)
+c   3-4: 2 conflicts (variables 1,2)
+c   3-5: 1 conflict (variable 3)
+c   4-5: 1 conflict (variable 2)
+c
+c With min_conflicts=2, should create edges: 1-2, 1-3, 1-4, 1-5, 2-3, 2-4, 3-4
+c This creates a dense conflict graph for testing community detection
+p cnf 3 5
+1 2 3 0
+-1 -2 3 0
+1 -2 -3 0
+-1 2 -3 0
+-1 -2 -3 0

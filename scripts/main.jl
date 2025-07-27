@@ -21,7 +21,7 @@ function main()
     println("=" ^ 40)
     
     # Default instance file (adjust path as needed)
-    instance_file = "../instances/UUF50.218.1000/uuf50-01.cnf"
+    instance_file = "../instances/test_3var_5clause.cnf"
     
     if !isfile(instance_file)
         println("Error: Instance file not found: $instance_file")

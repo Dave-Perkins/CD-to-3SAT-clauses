@@ -30,6 +30,14 @@ I want to use community detection to solve MAX-3SAT instances.
 - Simple: `[1,2,3]` vs `[-1,-2,-3]` → 3 conflicts → Edge ✅
 - Simple: `[1,2,3]` vs `[1,-2]` → 1 conflict → No edge ✅  
 - Real: UUF50 instances → Sparse conflict graphs (26-54 edges/218 clauses) ✅
+- **New Small Instance**: `test_3var_5clause.cnf` → Dense conflict graph (7 edges/5 clauses) ✅
+
+**Small Instance Details (`test_3var_5clause.cnf`)**:
+- ✅ **3 variables, 5 clauses**: Designed for testing and debugging
+- ✅ **Dense conflict structure**: 7 edges with min_conflicts=2 threshold
+- ✅ **Weight verification**: Conflicts range 2-3, squared weights 4-9
+- ✅ **Community detection**: Forms single community due to high connectivity
+- ✅ **Debug functionality**: Detailed trace shows all conflict calculations
 
 **Community Detection Implementation ✅**
 - ✅ **Label Propagation Algorithm**: Proper implementation with iterative label updates
@@ -50,3 +58,7 @@ I want to use community detection to solve MAX-3SAT instances.
 [ ] Experiment with different graph representations (variable-variable conflicts)
 [ ] Test on larger instances (100+ variables)
 [ ] Optimize the community-guided assignment strategy
+
+### Ideas by Dave to balance community structure
+[ ] Try flipping a coin when there's one conflict
+[ ] Try running label propagation (with conflicts set to 1) for fewer iterations
